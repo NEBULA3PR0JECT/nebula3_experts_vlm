@@ -8,7 +8,7 @@ from typing import Optional
 from fastapi import FastAPI
 from pydantic import BaseModel
 from .service.base_expert import BaseExpert
-from nebula3_pipeline.pipeline.api import PIPELINE_API
+from nebula3_experts.nebula3_pipeline.pipeline.api import PIPELINE_API
 import experts.common.constants as constants
 from experts.common.defines import ExpertCommands, OutputStyle
 
