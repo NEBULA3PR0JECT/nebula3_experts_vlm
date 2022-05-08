@@ -9,13 +9,11 @@ import sys
 sys.path.insert(0, 'experts/')
 sys.path.insert(0, 'nebula3_experts/nebula3_pipeline/nebula3_database/')
 sys.path.insert(0, 'nebula3_experts/nebula3_pipeline/')
+sys.path.insert(0, 'nebula3_experts/nebula3_pipeline/nebula3_database/database')
 from common.defines import *
 from experts.common.constants import OUTPUT
 
 import sys
-sys.path.insert(0, 'experts/')
-sys.path.insert(0, 'nebula3_pipeline/nebula3_database/')
-sys.path.insert(0, 'nebula3_pipeline/')
 from nebula3_experts.nebula3_pipeline.nebula3_database.movie_db import MOVIE_DB
 from nebula3_experts.nebula3_pipeline.nebula3_database.movie_s3 import MOVIE_S3
 # from nebula3_pipeline.nebula3_database.movie_tokens import MovieTokens
