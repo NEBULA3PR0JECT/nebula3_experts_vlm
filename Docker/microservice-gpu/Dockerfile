@@ -49,12 +49,15 @@ RUN /opt/conda/bin/conda config --append channels conda-forge && /opt/conda/bin/
 RUN conda clean --all --yes
 
 RUN git clone https://github.com/NEBULA3PR0JECT/nebula3_experts.git && git clone https://github.com/NEBULA3PR0JECT/nebula3_pipeline.git \ 
-    && git clone https://github.com/NEBULA3PR0JECT/nebula3_experts_vlm.git && git clone https://github.com/NEBULA3PR0JECT/nebula3_database.git && mkdir notebooks
+    && git clone https://github.com/NEBULA3PR0JECT/nebula3_database.git && mkdir notebooks
 
-RUN cp -r /nebula3_experts_vlm/. /notebooks/ && cp -r /nebula3_pipeline/. /notebooks/nebula3_experts/nebula3_pipeline \
+RUN git clone https://github.com/NEBULA3PR0JECT/nebula3_experts_vlm.git 
+RUN cp -r /nebula3_experts_vlm/. /notebooks/ && cp -r /nebula3_experts/. /notebooks/nebula3_experts \
+&& cp -r /nebula3_pipeline/. /notebooks/nebula3_experts/nebula3_pipeline \
 && cp -r /nebula3_database/. /notebooks/nebula3_experts/nebula3_pipeline/nebula3_database/
 
 WORKDIR /notebooks
 
 EXPOSE 8088
-CMD ["uvicorn", "test.main:app", "--host", "0.0.0.0", "--port", "8088"]
+# CMD ["uvicorn", "test.main:app", "--host", "0.0.0.0", "--port", "8088"]
+# uvicorn test.main:app --host 0.0.0.0 --port 8088

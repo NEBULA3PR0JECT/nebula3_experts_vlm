@@ -7,8 +7,8 @@ import logging
 from experts.common.defines import *
 import sys
 sys.path.insert(0, 'experts/')
-sys.path.insert(0, 'nebula3_pipeline/nebula3_database/')
-sys.path.insert(0, 'nebula3_pipeline/')
+sys.path.insert(0, 'nebula3_experts/nebula3_pipeline/nebula3_database/')
+sys.path.insert(0, 'nebula3_experts/nebula3_pipeline/')
 from common.defines import *
 from experts.common.constants import OUTPUT
 
