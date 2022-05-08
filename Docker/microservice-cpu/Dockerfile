@@ -1,5 +1,5 @@
-#FROM nvidia/cuda:10.2-cudnn8-devel-ubuntu18.04
-FROM ubuntu:18.04
+FROM nvidia/cuda:10.2-cudnn8-devel-ubuntu18.04
+# FROM ubuntu:18.04
 # Miniconda install copy-pasted from Miniconda's own Dockerfile reachable
 # at: https://github.com/ContinuumIO/docker-images/blob/master/miniconda3/debian/Dockerfile
 
@@ -7,6 +7,9 @@ ENV PATH /opt/conda/bin:$PATH
 
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
+
+RUN rm /etc/apt/sources.list.d/cuda.list
+RUN rm /etc/apt/sources.list.d/nvidia-ml.list
 
 RUN apt-get update --fix-missing && \
     apt-get install -y wget bzip2 ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1 git mercurial subversion curl && \
@@ -45,15 +48,17 @@ RUN /opt/conda/bin/conda config --append channels conda-forge && /opt/conda/bin/
 # RUN conda install jupyterlab && conda clean --all --yes
 RUN conda clean --all --yes
 
+RUN git clone https://github.com/NEBULA3PR0JECT/nebula3_pipeline.git \ 
+    && git clone https://github.com/NEBULA3PR0JECT/nebula3_database.git && git clone https://github.com/NEBULA3PR0JECT/nebula3_vlm.git \
+    && mkdir notebooks
 
-RUN git clone https://github.com/NEBULA3PR0JECT/nebula3_experts.git && git clone https://github.com/NEBULA3PR0JECT/nebula3_pipeline.git \ 
-    && git clone https://github.com/NEBULA3PR0JECT/nebula3_vlm.git && git clone https://github.com/NEBULA3PR0JECT/nebula3_database.git && mkdir notebooks
-
-RUN cp -r /nebula3_experts/. /notebooks/ && cp -r /nebula3_pipeline/. /notebooks/nebula3_pipeline/ \
-&& cp -r /nebula3_vlm/. /notebooks/nebula3_vlm/ && cp -r /nebula3_database/. /notebooks/nebula3_pipeline/nebula3_database/ \
-&& cp -r /nebula3_database/. /notebooks/nebula3_vlm/nebula3_database/
+RUN git clone https://github.com/NEBULA3PR0JECT/nebula3_experts_vlm.git 
+RUN cp -r /nebula3_experts_vlm/. /notebooks/ && cp -r /nebula3_pipeline/. /notebooks/nebula3_pipeline \
+    && cp -r /nebula3_database/. /notebooks/nebula3_pipeline/nebula3_database/ \
+    && cp -r /nebula3_vlm/. /notebooks/nebula3_vlm/
 
 WORKDIR /notebooks
 
 EXPOSE 8088
 CMD ["uvicorn", "test.main:app", "--host", "0.0.0.0", "--port", "8088"]
+# uvicorn test.main:app --host 0.0.0.0 --port 8088

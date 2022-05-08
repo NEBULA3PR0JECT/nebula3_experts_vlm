@@ -48,8 +48,6 @@ RUN /opt/conda/bin/conda config --append channels conda-forge && /opt/conda/bin/
 # RUN conda install jupyterlab && conda clean --all --yes
 RUN conda clean --all --yes
 
-# RUN echo "test2111"
-
 RUN git clone https://github.com/NEBULA3PR0JECT/nebula3_pipeline.git \ 
     && git clone https://github.com/NEBULA3PR0JECT/nebula3_database.git && git clone https://github.com/NEBULA3PR0JECT/nebula3_vlm.git \
     && mkdir notebooks
@@ -62,5 +60,5 @@ RUN cp -r /nebula3_experts_vlm/. /notebooks/ && cp -r /nebula3_pipeline/. /noteb
 WORKDIR /notebooks
 
 EXPOSE 8088
-# CMD ["uvicorn", "test.main:app", "--host", "0.0.0.0", "--port", "8088"]
+CMD ["uvicorn", "test.main:app", "--host", "0.0.0.0", "--port", "8088"]
 # uvicorn test.main:app --host 0.0.0.0 --port 8088
