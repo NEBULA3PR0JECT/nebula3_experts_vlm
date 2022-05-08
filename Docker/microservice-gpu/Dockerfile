@@ -48,16 +48,16 @@ RUN /opt/conda/bin/conda config --append channels conda-forge && /opt/conda/bin/
 # RUN conda install jupyterlab && conda clean --all --yes
 RUN conda clean --all --yes
 
-RUN echo "test211"
+# RUN echo "test2111"
 
-RUN git clone https://github.com/NEBULA3PR0JECT/nebula3_experts.git && git clone https://github.com/NEBULA3PR0JECT/nebula3_pipeline.git \ 
-    && git clone https://github.com/NEBULA3PR0JECT/nebula3_database.git && git clone https://github.com/NEBULA3PR0JECT/nebula3_vlm.git && mkdir notebooks
+RUN git clone https://github.com/NEBULA3PR0JECT/nebula3_pipeline.git \ 
+    && git clone https://github.com/NEBULA3PR0JECT/nebula3_database.git && git clone https://github.com/NEBULA3PR0JECT/nebula3_vlm.git \
+    && mkdir notebooks
 
 RUN git clone https://github.com/NEBULA3PR0JECT/nebula3_experts_vlm.git 
-RUN cp -r /nebula3_experts_vlm/. /notebooks/ && cp -r /nebula3_experts/. /notebooks/nebula3_experts \
-&& cp -r /nebula3_pipeline/. /notebooks/nebula3_experts/nebula3_pipeline \
-&& cp -r /nebula3_database/. /notebooks/nebula3_experts/nebula3_pipeline/nebula3_database/ \
-&& cp -r /nebula3_vlm/. /notebooks/nebula3_vlm/
+RUN cp -r /nebula3_experts_vlm/. /notebooks/ && cp -r /nebula3_pipeline/. /notebooks/nebula3_pipeline \
+    && cp -r /nebula3_database/. /notebooks/nebula3_pipeline/nebula3_database/ \
+    && cp -r /nebula3_vlm/. /notebooks/nebula3_vlm/
 
 WORKDIR /notebooks
 

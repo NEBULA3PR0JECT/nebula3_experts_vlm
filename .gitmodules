@@ -1,9 +1,6 @@
 [submodule "nebula3_pipeline"]
 	path = nebula3_pipeline
-	url = git@github.com:NEBULA3PR0JECT/nebula3_pipeline.git
-[submodule "nebula3_experts"]
-	path = nebula3_experts
-	url = https://github.com/NEBULA3PR0JECT/nebula3_experts.git
+	url = https://github.com/NEBULA3PR0JECT/nebula3_pipeline.git
 [submodule "nebula3_vlm"]
 	path = nebula3_vlm
 	url = https://github.com/NEBULA3PR0JECT/nebula3_vlm.git
