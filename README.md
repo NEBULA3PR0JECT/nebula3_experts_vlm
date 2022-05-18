@@ -3,6 +3,7 @@
 
 ## HOW TO USE THIS REPO from VSCODE:
 1. `git clone https://github.com/NEBULA3PR0JECT/nebula3_experts_vlm.git --recursive`
+2. `python3 -m uvicorn nebula3_experts_vlm.main:app --port=8088 --reload --host "0.0.0.0"`
 
 ## HOW TO USE THIS REPO with DOCKER:
 
