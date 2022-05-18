@@ -2,15 +2,14 @@
 from fastapi import FastAPI
 
 from typing import Optional
-
-from nebula3_experts.experts.service.base_expert import BaseExpert
-from nebula3_experts.experts.app import ExpertApp
-from nebula3_experts.experts.common.defines import *
-
 import sys
 sys.path.insert(0, 'nebula3_vlm/')
 sys.path.insert(0, 'nebula3_experts/')
 sys.path.insert(0, 'nebula3_experts/experts/')
+
+from nebula3_experts.experts.service.base_expert import BaseExpert
+from nebula3_experts.experts.app import ExpertApp
+from nebula3_experts.experts.common.defines import *
 from nebula3_vlm.models.clip_ms.clip_ms import Model
 
 class VlmExpert(BaseExpert):
